@@ -14,7 +14,6 @@ class BaseClassPageSettings:
 
     def set_browser(self):
         self.options = webdriver.ChromeOptions()
-        self.options.add_argument("headless")
         self.options.add_argument("--proxy-server=%s" % PROXY)
         self.browser = webdriver.Chrome(
             str(os.path.dirname(os.path.realpath(__file__)))
