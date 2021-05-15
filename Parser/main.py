@@ -1,13 +1,7 @@
-from BaseClassPage import OzonPageParser
-
+from OzonStartPage import ParseOzonStartPage
 
 def main():
-    print(
-        OzonPageParser(
-            'https://www.ozon.ru/product/gazonokosilka-gardena-powermax-1400-34-elektricheskaya-140052491/'
-        ).hrefs_to_products_at_page
-    )
-
+    print(ParseOzonStartPage().hrefs_to_products_at_page)
 
 if __name__ == "__main__":
     main()

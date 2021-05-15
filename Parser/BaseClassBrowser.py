@@ -1,14 +1,18 @@
 import os
 from bs4 import BeautifulSoup
 from selenium import webdriver
+from time import sleep
 
-PROXY = "188.166.125.206:37161"
+PROXY = "46.101.83.76:8080"
 
 
 class BaseClassPageSettings:
+    SCROLL_PAUSE_TIME = 1
+
     def __init__(self, url):
         self.url = url
         self.set_browser()
+        self.scroll_down_page()
         self.get_html()
         self.soup = BeautifulSoup(self.html, "lxml")
 
@@ -24,3 +28,7 @@ class BaseClassPageSettings:
     def get_html(self) -> None:
         self.browser.get(self.url)
         self.html: list = self.browser.page_source
+
+    def scroll_down_page(self) -> None:
+        self.browser.execute_script("window.scrollTo(0, document.body.scrollHeight);")
+        sleep(self.SCROLL_PAUSE_TIME)
